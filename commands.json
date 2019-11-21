@@ -40,18 +40,34 @@
             "contains": [["suche"]],
             "append": {
                 "mode": "after",
-                "content": "suche"
+                "content": "suche",
+                "to-msg": true
             },
             "pid": true,
             "pid-category": "browser",
             "do": "chromium https://www.ecosia.org/search?q=",
-            "msg": "Websuche wird durchgeführt"
+            "msg": "Suche im Internet nach "
             },
-        "weather": {
-            "name": "Lade Wettervorhersage",
-            "type": "query",
-            "contains": [["wetter"]],
-            "do": "suche wetter",
-            "msg": "Wettervorhersage wird geladen"
-        }
+            
+            
+        "disable_talk": {
+            "name": "Deaktiviere Sprachausgabe",
+            "type": "def",
+            "contains": [["sei", "leise"], ["sprach", "deaktiviere"]],
+            "do": {
+                "talk": false
+                },
+            "msg": "Sprachausgabe deaktiviert."
+            },
+        "enable_talk": {
+            "name": "Aktiviere Sprachausgabe",
+            "type": "def",
+            "contains": [["sprich", "mir"], ["sprach", "aktiv"]],
+            "do": {
+                "talk": true
+                },
+            "msg": "Sprachausgabe aktiviert."
+            }
+        
+        
  }
