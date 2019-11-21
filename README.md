@@ -29,4 +29,16 @@ This Configuration opens the browser by saying "start browser" or "open chrome"
             "pid": true,
             "pid-category": "browser",
             "msg": "Started chrome browser"
+            }
+            
+### Exit the browser
+This Configuration kills all processes started by the voice recognition with category "browser"
+
+        "exit-browser": {
+            "name": "Quit Chrome",
+            "type": "kill",
+            "contains": [["exit", "chrome"], ["quit", "browser"]],
+            "do": "browser",
+            "msg": "Running browser sessions quit."
             },
+
