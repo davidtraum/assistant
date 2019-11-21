@@ -1,0 +1,57 @@
+ {
+        "chrome": {
+            "name": "Starte Chrome",
+            "type": "cmd",
+            "contains": [["start", "chrome"], ["browser"]],
+            "do": "google-chrome",
+            "pid": true,
+            "pid-category": "browser",
+            "error": "chromium",
+            "msg": "Chrome Browser gestartet"
+            },
+        "chromium": {
+            "name": "Starte Chromium",
+            "type": "cmd",
+            "contains": [["chromium"]],
+            "pid": true,
+            "pid-category": "browser",
+            "do": "chromium",
+            "msg": "Chromium Browser gestartet"
+            },
+        "kill-browser": {
+            "name": "Beende Chrome",
+            "type": "kill",
+            "contains": [["beenden", "chrome"], ["browser", "beenden"]],
+            "do": "browser",
+            "msg": "Laufende Browser beendet"
+            },
+        "facebook": {
+            "name": "Öffne Facebook",
+            "type": "cmd",
+            "contains": [["facebook"]],
+            "pid": true,
+            "pid-category": "browser",
+            "do": "chromium facebook.com",
+            "msg": "Facebook geöffnet",
+            },
+        "search": {
+            "name": "Starte Websuche",
+            "type": "cmd",
+            "contains": [["suche"]],
+            "append": {
+                "mode": "after",
+                "content": "suche"
+            },
+            "pid": true,
+            "pid-category": "browser",
+            "do": "chromium https://www.ecosia.org/search?q=",
+            "msg": "Websuche wird durchgeführt"
+            },
+        "weather": {
+            "name": "Lade Wettervorhersage",
+            "type": "query",
+            "contains": [["wetter"]],
+            "do": "suche wetter",
+            "msg": "Wettervorhersage wird geladen"
+        }
+ }
