@@ -32,7 +32,7 @@
             "pid": true,
             "pid-category": "browser",
             "do": "chromium facebook.com",
-            "msg": "Facebook geöffnet",
+            "msg": "Facebook geöffnet"
             },
         "search": {
             "name": "Starte Websuche",
