@@ -4,12 +4,14 @@ import json
 import subprocess
 from gtts import gTTS
 import vlc
+import sys
 
 LANG = "de-DE";
 
 DATA = dict();
 PID = dict();
 VARS = dict();
+CONFIG = dict();
 last_action = 0;
 
 def getVar(name, defaut):
@@ -18,14 +20,22 @@ def getVar(name, defaut):
     else:
         return default;
 
-with open('commands.json') as file:
+with open('config.json') as file:
+    CONFIG = json.loads(file.read());
+
+commandfile = CONFIG['data-file'];
+if len(sys.argv)>1:
+    commandfile = sys.argv[1];
+    
+with open(commandfile) as file:
     DATA = json.loads(file.read());
+    
 
 def log(msg):
     print("[ASSISTANT] ", msg);
     
-def say(msg):
-    if(msg==None or not getVar('talk', False)):
+def say(msg, force=False):
+    if(msg==None or not getVar('talk', False) and not force):
         return;
     result = gTTS(text=msg, lang=LANG[:2]);
     result.save("voice_out.mp3")
@@ -112,7 +122,11 @@ def callback(recognizer, audio):
         text = recognizer.recognize_google(audio, language="de-DE")
         text = text.lower();
         log("Understood: " + text);
-        process(text);
+        if(not CONFIG['keyword']['enabled'] or (CONFIG['keyword']['text'] in text)):
+            if(CONFIG['sound']['confirm']):
+                media = vlc.MediaPlayer("beep.mp3");
+                media.play();
+            process(text);
     except sr.UnknownValueError:
         pass;
     except sr.RequestError as e:

@@ -1,0 +1,13 @@
+{
+    "keyword": {
+        "enabled": true,
+        "text": "computer"
+    },
+    
+    "data-file": "commands.json",
+    
+    "sound": {
+        "confirm": true
+    }
+
+}
