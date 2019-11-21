@@ -15,3 +15,18 @@ After downloading the repository you need to install the python library dependen
 ## 3. Configuration
 The general configuration is located in the config.json file.
 To create your own commands, you must create a json file which is formatted like the example "commands.json" file.
+
+## 4. Example Tasks and Commands
+
+### Open the browser
+This Configuration opens the browser by saying "start browser" or "open chrome"
+
+        "chrome": {
+            "name": "Start Chrome",
+            "type": "cmd",
+            "contains": [["open", "chrome"], ["start", "browser"]],
+            "do": "google-chrome",
+            "pid": true,
+            "pid-category": "browser",
+            "msg": "Started chrome browser"
+            },
